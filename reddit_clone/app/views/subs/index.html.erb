@@ -1,0 +1,23 @@
+<% content_for :header do %>
+    <h1>All Subs</h1>
+<% end %>
+
+<ul>
+<% @subs.each do |sub| %>
+    <li><p><%= sub.title %></p>
+        <p><%= sub.description%></p>
+        <form action="<%= edit_user_sub_url(sub) %>" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <button>Edit Sub</button>
+        </form>
+    </li>
+<% end %>
+</ul>
+
+
+<form action="<%= new_sub_url %>" method="GET">
+    <input type="hidden" name="[user_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <button>New Sub</button>
+</form>

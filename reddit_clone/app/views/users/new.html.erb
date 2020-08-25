@@ -1,0 +1,8 @@
+<% content_for :header do %>
+    <h1>New User</h1>
+    <form action="<%= users_url %>" method="post">
+        <input type="hidden" name="authenticity_token"
+            value="<%= form_authenticity_token %>">
+<% end %>
+
+<%= render './shared/form', user: @user, login: false %>
